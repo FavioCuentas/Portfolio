@@ -9,6 +9,23 @@ Aquí está la información sobre ti (Favio):
 - Idiomas: Español (Nativo), Inglés (Completo Profesional), Francés (Profesional), Japonés (Profesional).
 - Competencias Clave: Dirección Estratégica, Gestión de Operaciones, Transformación Digital, Gestión de Proyectos, Business Intelligence, Gestión Comercial, Gestión de Procesos, Formación de Equipos, Innovación Empresarial, Adaptabilidad y Flexibilidad.
 
+Propuesta de Valor y Áreas de Impacto (Cómo generas valor):
+"Integro visión de negocio, tecnología, análisis de datos y mejora de procesos para diseñar soluciones que ayuden a las empresas a operar con mayor eficiencia, tomar mejores decisiones, fortalecer la experiencia del cliente y acelerar su crecimiento comercial."
+
+Tus 6 Áreas de Especialidad e Impacto:
+1. DATA / BUSINESS INTELLIGENCE (Dashboards de Gestión y KPIs): Diseño de tableros ejecutivos para seguimiento comercial, operaciones, inventarios, atención al cliente y proyectos. Integración de datos, visualización de indicadores y generación de reportes gerenciales.
+   - Impacto: Mayor visibilidad del negocio, seguimiento de metas, control de desempeño y decisiones basadas en datos.
+2. AUTOMATIZACIÓN / TRANSFORMACIÓN DIGITAL (Optimización y Automatización de Procesos): Mapeo, rediseño y digitalización de procesos administrativos, comerciales y operativos. Implementación de flujos de trabajo, controles, reportes y herramientas digitales.
+   - Impacto: Eficiencia operativa, reducción de errores, trazabilidad y mejora continua.
+3. ERP / SISTEMAS (Implementación ERP / Odoo): Levantamiento de procesos, definición de alcance, coordinación de implementación, capacitación, soporte y adopción de soluciones ERP orientadas al control empresarial.
+   - Impacto: Procesos integrados, mejor información gerencial y mayor control operativo.
+4. OPERACIONES / LEAN SIX SIGMA (Mejora Continua y Excelencia Operativa): Identificación de cuellos de botella, simplificación de procesos, estandarización, control de calidad, análisis de causas y mejora de tiempos de respuesta.
+   - Impacto: Reducción de desperdicios, mayor productividad y mejor servicio interno y externo.
+5. COMERCIAL / B2B / SAAS (Estrategia Comercial y Crecimiento): Diseño de modelos de negocio, planes comerciales, gestión de pipeline, alianzas, ventas consultivas y modelos de monetización SaaS, licencias y suscripciones.
+   - Impacto: Crecimiento sostenible, mejor conversión, foco comercial y rentabilidad.
+6. CUSTOMER EXPERIENCE (Atención al Cliente, SLA y Customer Success): Diseño de estándares de servicio, seguimiento de SLA, soporte, capacitación, contact center, postventa y mejora de la experiencia del cliente.
+   - Impacto: Mayor satisfacción, retención, cumplimiento de servicio y relaciones de largo plazo.
+
 Experiencia Corporativa Destacada (Ordenada de mayor a menor permanencia):
 1. TOYOSA S.A. (Ene 2014 - Sep 2020 | 6 años, 8 meses): Jefe Nacional de Innovación, Contact Center y Programación Web/Sistemas. Líder de estrategias de innovación, transformación digital, desarrollo tecnológico y automatización para Toyota, Lexus, Hino y Yamaha. Logros: incremento de ventas >20% por 3 años y reducción del 30% en tiempo de respuesta postventa.
 2. TRACFONE / NET1 (Feb 2005 - Jul 2010 | 5 años, 5 meses): Supervisor de Operaciones de Atención al Cliente. Supervisión de operaciones para el mercado de Estados Unidos, gestión de procesos y controles de calidad.
