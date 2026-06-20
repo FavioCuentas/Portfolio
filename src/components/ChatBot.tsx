@@ -60,7 +60,7 @@ export default function ChatBot() {
   };
 
   const suggestions = [
-    "¿Cuáles fueron tus principales logros en Datec Corp?",
+    "¿Cuáles fueron tus logros liderando innovación en TOYOSA S.A.?",
     "¿Qué significa ser Master Black Belt en Lean Six Sigma?",
     "¿Cómo aplicas la Inteligencia de Negocios en tus proyectos?",
     "Cuéntame sobre tu rol actual en Force One System Technologies."
