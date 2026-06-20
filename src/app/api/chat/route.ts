@@ -125,7 +125,7 @@ export async function POST(req: Request) {
       headers: {
         'Authorization': `Bearer ${openrouterKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://portfolio-seven-blush-63.vercel.app/',
+        'HTTP-Referer': 'https://portfolio-faviocuentas.vercel.app/',
         'X-Title': 'Favio Digital Twin',
       },
       body: JSON.stringify(payload)
