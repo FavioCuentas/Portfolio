@@ -101,8 +101,8 @@ export async function POST(req: Request) {
       headers: {
         'Authorization': `Bearer ${openrouterKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'http://localhost:3001', 
-        'X-Title': 'Favio Digital Twin', 
+        'HTTP-Referer': 'https://portfolio-seven-blush-63.vercel.app/',
+        'X-Title': 'Favio Digital Twin',
       },
       body: JSON.stringify(payload)
     });
@@ -114,7 +114,7 @@ export async function POST(req: Request) {
     }
 
     const data = await response.json();
-    
+
     return NextResponse.json(data);
 
   } catch (error) {
