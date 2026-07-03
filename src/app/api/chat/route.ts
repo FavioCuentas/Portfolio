@@ -113,7 +113,7 @@ export async function POST(req: Request) {
     }
 
     const payload = {
-      model: 'openai/gpt-oss-120b:free',
+      model: 'nvidia/nemotron-nano-9b-v2:free',
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
         ...sanitised
