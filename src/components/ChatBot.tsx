@@ -46,14 +46,17 @@ export default function ChatBot() {
         })
       });
 
-      if (!response.ok) throw new Error('Network error');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.error || 'Lo siento, tuve un problema de conexión. ¿Podrías intentar nuevamente?');
+      }
 
       const data = await response.json();
-      const assistantMsg = data.choices?.[0]?.message?.content || "Hubo un error al procesar mi respuesta.";
+      const assistantMsg = data.choices?.[0]?.message?.content || data.choices?.[0]?.message?.reasoning || "Hubo un error al procesar mi respuesta.";
       
       setMessages(prev => [...prev, { role: 'assistant', content: assistantMsg }]);
-    } catch (error) {
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Lo siento, tuve un problema de conexión. ¿Podrías intentar nuevamente?' }]);
+    } catch (error: any) {
+      setMessages(prev => [...prev, { role: 'assistant', content: error?.message || 'Lo siento, tuve un problema de conexión. ¿Podrías intentar nuevamente?' }]);
     } finally {
       setIsLoading(false);
     }

@@ -113,16 +113,17 @@ export async function POST(req: Request) {
     }
 
     const MODELS = [
-      'openrouter/free',
-      'minimax/minimax-m3:free',
-      'google/gemma-4-31b-it:free',
-      'liquid/lfm-2.5-2.6b:free'
+      'liquid/lfm-2.5-2.6b:free',
+      'openrouter/free'
     ];
 
     let lastError: string | null = null;
     let lastStatus = 500;
 
     for (const model of MODELS) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4500);
+
       try {
         const payload = {
           model,
@@ -140,24 +141,36 @@ export async function POST(req: Request) {
             'HTTP-Referer': 'https://portfolio-faviocuentas.vercel.app/',
             'X-Title': 'Favio Digital Twin',
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
+          signal: controller.signal
         });
+
+        clearTimeout(timeoutId);
 
         if (response.ok) {
           const data = await response.json();
-          return NextResponse.json(data);
+          const content = data.choices?.[0]?.message?.content || data.choices?.[0]?.message?.reasoning;
+          if (content && typeof content === 'string' && content.trim().length > 0) {
+            if (!data.choices?.[0]?.message?.content) {
+              if (data.choices?.[0]?.message) {
+                data.choices[0].message.content = content;
+              }
+            }
+            return NextResponse.json(data);
+          }
         }
 
         lastStatus = response.status;
         lastError = await response.text();
         console.warn(`Modelo ${model} falló con status ${response.status}:`, lastError);
-      } catch (err) {
-        console.warn(`Excepción intentando modelo ${model}:`, err);
+      } catch (err: any) {
+        clearTimeout(timeoutId);
+        console.warn(`Excepción intentando modelo ${model}:`, err?.name === 'AbortError' ? 'Timeout 4.5s' : err);
       }
     }
 
     console.error('Todos los modelos de OpenRouter fallaron. Último error:', lastError);
-    return NextResponse.json({ error: 'Error comunicándose con el modelo AI.' }, { status: lastStatus });
+    return NextResponse.json({ error: 'El servicio está congestionado en este momento. Por favor reintenta en un momento.' }, { status: lastStatus });
 
   } catch (error) {
     console.error('Error en el endpoint de chat:', error);
