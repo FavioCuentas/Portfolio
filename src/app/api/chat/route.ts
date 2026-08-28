@@ -112,34 +112,52 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'La clave de API no está configurada.' }, { status: 500 });
     }
 
-    const payload = {
-      model: 'nvidia/nemotron-nano-9b-v2:free',
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        ...sanitised
-      ],
-    };
+    const MODELS = [
+      'openrouter/free',
+      'minimax/minimax-m3:free',
+      'google/gemma-4-31b-it:free',
+      'liquid/lfm-2.5-2.6b:free'
+    ];
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${openrouterKey}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://portfolio-faviocuentas.vercel.app/',
-        'X-Title': 'Favio Digital Twin',
-      },
-      body: JSON.stringify(payload)
-    });
+    let lastError: string | null = null;
+    let lastStatus = 500;
 
-    if (!response.ok) {
-      const errorData = await response.text();
-      console.error('Error de OpenRouter:', errorData);
-      return NextResponse.json({ error: 'Error comunicándose con el modelo AI.' }, { status: response.status });
+    for (const model of MODELS) {
+      try {
+        const payload = {
+          model,
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            ...sanitised
+          ],
+        };
+
+        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${openrouterKey}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': 'https://portfolio-faviocuentas.vercel.app/',
+            'X-Title': 'Favio Digital Twin',
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          return NextResponse.json(data);
+        }
+
+        lastStatus = response.status;
+        lastError = await response.text();
+        console.warn(`Modelo ${model} falló con status ${response.status}:`, lastError);
+      } catch (err) {
+        console.warn(`Excepción intentando modelo ${model}:`, err);
+      }
     }
 
-    const data = await response.json();
-
-    return NextResponse.json(data);
+    console.error('Todos los modelos de OpenRouter fallaron. Último error:', lastError);
+    return NextResponse.json({ error: 'Error comunicándose con el modelo AI.' }, { status: lastStatus });
 
   } catch (error) {
     console.error('Error en el endpoint de chat:', error);
